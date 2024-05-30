@@ -16,12 +16,12 @@ const NavBar = () => {
             </Link>
             <ul className='flex space-x-6'>
                 {links.map((link) =>
-                <Link
-                    key={link.href}
-                    href={link.href}
-                    className='text-zinc-400 hover:text-zinc-800 transition-colors'>
-                    {link.label}
-                </Link>)}
+                    <Link
+                        key={link.href}
+                        href={link.href}
+                        className='text-zinc-400 hover:text-zinc-800 transition-colors'>
+                        {link.label}
+                    </Link>)}
 
             </ul>
         </nav>
