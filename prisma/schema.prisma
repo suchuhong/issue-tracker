@@ -18,8 +18,8 @@ model Issues {
   title       String   @db.VarChar(255)
   description String   @db.Text
   status      Status   @default(OPEN)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(dbgenerated("NOW()")) @db.DateTime
+  updatedAt   DateTime @default(dbgenerated("NOW() ON UPDATE NOW()")) @db.Timestamp(0)
 }
 
 enum Status {
