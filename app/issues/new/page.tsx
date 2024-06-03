@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 import createIssueSchema from '@/app/createIssueSchema';
+import ErrorMessage from '@/app/components/ErrorMessage';
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), { ssr: false })
 
 type IssueForm = z.infer<typeof createIssueSchema>;
@@ -26,11 +27,13 @@ const NewIssuePage = () => {
     <div className='max-w-xl'>
       {
         error && 
+        (
         <Callout.Root color='red' className='mb-5'>
           <Callout.Text>
             {error}
           </Callout.Text>
         </Callout.Root>
+        )
       }
       <form className='space-y-3' 
       onSubmit={
@@ -45,13 +48,19 @@ const NewIssuePage = () => {
       }>
         <TextField.Root placeholder='title' {...register('title')}>
         </TextField.Root>
-        { errors.title && <Text color='red' as='p'>{errors.title.message}</Text> }
+        <ErrorMessage>
+          {errors.title?.message}
+        </ErrorMessage>
         <Controller 
           name= "description"
           control={control}
-          render={ ({ field }) => <SimpleMDE placeholder='Description' {...field}/> }
-          />
-        { errors.description && <Text color='red' as='p'>{errors.description.message}</Text> }
+          render={ ({ field }) => (
+            <SimpleMDE placeholder='Description' {...field}/> 
+          )}
+        />
+        <ErrorMessage>
+          {errors.description?.message}
+        </ErrorMessage>
         <Button>Submit New Issue</Button>
       </form>
     </div>
