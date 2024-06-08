@@ -16,11 +16,11 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="flex space-x-6 border-b mb-5 px-4 h-14 items-center">
-      <Link href="/">
+    <nav className='flex space-x-6 border-b mb-5 px-4 h-14 items-center'>
+      <Link href='/'>
         <PiBugBeetleFill />
       </Link>
-      <ul className="flex space-x-6">
+      <ul className='flex space-x-6'>
         {links.map(link => (
           <Link
             key={link.href}

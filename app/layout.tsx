@@ -23,11 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={inter.variable}>
-        <Theme accentColor="purple" panelBackground="solid" radius="large">
+        <Theme accentColor='purple' panelBackground='solid' radius='large'>
           <NavBar />
-          <main className="p-5">{children}</main>
+          <main className='p-5'>{children}</main>
           {/* <ThemePanel /> */}
         </Theme>
       </body>

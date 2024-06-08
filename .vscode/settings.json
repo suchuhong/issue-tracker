@@ -21,8 +21,10 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // 行尾是否添加分号
   "prettier.semi": true,
-  // 使用单引号
+  // js/ts 使用单引号
   "prettier.singleQuote": true,
+  // jsx/tsx 使用单引号
+  "prettier.jsxSingleQuote": true,
   // 超过最大值换行
   "prettier.printWidth": 80,
   // 缩进不使用tab，使用空格
