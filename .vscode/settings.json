@@ -1,9 +1,44 @@
 {
   "files.autoSave": "onFocusChange",
+  // 粘贴时格式化代码
+  "editor.formatOnPaste": true,
+  // 保存格式化
   "eslint.format.enable": true,
   "editor.formatOnSave": true,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // 定制
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 行尾是否添加分号
+  "prettier.semi": true,
+  // 使用单引号
+  "prettier.singleQuote": true,
+  // 超过最大值换行
+  "prettier.printWidth": 80,
+  // 缩进不使用tab，使用空格
+  "prettier.useTabs": false,
+  // 在对象，数组括号与文字之间加空格 "{ foo: bar }"
+  "prettier.bracketSpacing": true,
+  // (x) => {} 箭头函数参数只有一个时是否要有小括号。avoid：省略括号
+  "prettier.arrowParens": "avoid",
+  // 在对象或数组最后一个元素后面是否加逗号（在ES5中加尾逗号）
+  "prettier.trailingComma": "es5",
+  // 根据打开文件的内容自动检测 #editor.tabSize#和#editor.intertSpaces#
+  // 例如虽然下面设置的 tabSize 为 4，但是当前文件打开时是文件内容的 tabSize 为 2，
+  // 所以依然会沿用 2，如果设置为 false，后续的 tabSize 则会使用 4
+  "editor.detectIndentation": true,
+  // 是否使用空格
+  "editor.insertSpaces": true,
+  // 空格或者制表符的大小
+  "editor.tabSize": 2
 }
