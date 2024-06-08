@@ -25,6 +25,17 @@ const NewIssuePage = () => {
   const [error, setError] = useState('');
   const [isSubmitting, setSubmitting] = useState(false);
 
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      setSubmitting(true);
+      await axios.post('/api/issues', data);
+      router.push('/issues');
+    } catch (error) {
+      setSubmitting(false);
+      setError('未知的错误发生。');
+    }
+  });
+
   return (
     <div className='max-w-xl'>
       {
@@ -37,24 +48,15 @@ const NewIssuePage = () => {
         </Callout.Root>
         )
       }
-      <form className='space-y-3' 
-      onSubmit={
-        handleSubmit(async (data) => {
-          try {
-            setSubmitting(true);
-            await axios.post('/api/issues', data);
-            router.push('/issues');
-          } catch (error) {
-            setSubmitting(false);
-            setError('未知的错误发生。');
-          }
-        })
-      }>
+      <form className='space-y-3' onSubmit={onSubmit}>
+        {/* 标题 */}
         <TextField.Root placeholder='title' {...register('title')}>
         </TextField.Root>
+        {/* 错误提示 */}
         <ErrorMessage>
           {errors.title?.message}
         </ErrorMessage>
+        {/* 描述 */}
         <Controller 
           name= "description"
           control={control}
@@ -62,9 +64,11 @@ const NewIssuePage = () => {
             <SimpleMDE placeholder='Description' {...field}/> 
           )}
         />
+        {/* 错误提示 */}
         <ErrorMessage>
           {errors.description?.message}
         </ErrorMessage>
+        {/* 提交按钮 */}
         <Button disabled={isSubmitting}>
           Submit New Issue {isSubmitting && <Spinner />}
         </Button>
