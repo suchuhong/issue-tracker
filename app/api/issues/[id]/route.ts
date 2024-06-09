@@ -1,4 +1,4 @@
-import createIssueSchema from '@/app/createIssueSchema';
+import issueSchema from '@/app/IssueSchema';
 import prisma from '@/prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -9,7 +9,7 @@ interface Props {
 // 更新issue
 export async function PATCH(request: NextRequest, { params }: Props) {
   const body = await request.json();
-  const validation = createIssueSchema.safeParse(body);
+  const validation = issueSchema.safeParse(body);
   if (!validation.success)
     return NextResponse.json(validation.error.format(), { status: 400 });
 
