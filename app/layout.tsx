@@ -26,11 +26,13 @@ export default function RootLayout({
     <html lang='en'>
       <body className={inter.variable}>
         <Theme accentColor='purple' panelBackground='solid' radius='large'>
-          <NavBar />
-          <main className='p-5'>
-            <Container>{children}</Container>
-          </main>
-          {/* <ThemePanel /> */}
+          <Container>
+            <NavBar />
+            <main className='p-5'>
+              <Container>{children}</Container>
+            </main>
+            {/* <ThemePanel /> */}
+          </Container>
         </Theme>
       </body>
     </html>
