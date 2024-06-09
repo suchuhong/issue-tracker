@@ -1,8 +1,11 @@
+'use client';
 import { TrashIcon } from '@radix-ui/react-icons';
 import { AlertDialog, Button, Flex } from '@radix-ui/themes';
-import Link from 'next/link';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
+  const router = useRouter();
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger>
@@ -13,7 +16,7 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
       <AlertDialog.Content maxWidth='450px'>
         <AlertDialog.Title>删除</AlertDialog.Title>
         <AlertDialog.Description size='2'>
-          确定删除这个issue？这个操作无法回退
+          确定删除这个issue?这个操作无法回退
         </AlertDialog.Description>
 
         <Flex gap='3' mt='4' justify='end'>
@@ -23,7 +26,15 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
             </Button>
           </AlertDialog.Cancel>
           <AlertDialog.Action>
-            <Button variant='solid' color='red'>
+            <Button
+              variant='solid'
+              color='red'
+              onClick={async () => {
+                await axios.delete('/api/issues/' + issueId);
+                router.push('/issues');
+                router.refresh();
+              }}
+            >
               确认
             </Button>
           </AlertDialog.Action>
